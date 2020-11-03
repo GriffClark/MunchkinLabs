@@ -1,11 +1,14 @@
 <?php
+require_once 'res.inc.php';
+require_once 'dbh.inc.php';
+
 if (isset($_POST["submit"])) {
     $name = $_POST["name"];
     $email = $_POST["email"];
     $pwd = $_POST["pwd"];
     $pwdRepeat = $_POST["pwdrepeat"];
 
-    $errorRedirectPath = "../../ui/signup.php";
+    $errorRedirectPath = "signup.php";
 
     if (emptyInputSignup($name, $email, $pwd, $pwdRepeat) !== false) {
         header("location: ../signup.php?error=emptyInput");
@@ -39,5 +42,5 @@ if (isset($_POST["submit"])) {
 else {
     // When I screwed with this filepath it changed, but none of the other ones did. No clue why though
     header("location: $errorRedirectPath?error=illigalPath");
-    die();
+    exit();
 }

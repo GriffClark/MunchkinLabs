@@ -2,7 +2,7 @@
 include_once 'header.php';
 ?>
 
-Index page
+Hello World
 
 <?php
 include_once 'footer.php';
