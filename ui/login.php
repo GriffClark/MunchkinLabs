@@ -23,9 +23,6 @@ include_once 'header.php';
 						</div>
 						<input type="password" name="pwd" class="form-control" placeholder="password">
 					</div>
-					<div class="row align-items-center remember">
-						<input type="checkbox">Remember Me
-					</div>
 					<div class="form-group">
 						<input type="submit" value="Login" class="btn float-right login_btn">
 					</div>
@@ -33,10 +30,10 @@ include_once 'header.php';
 			</div>
 			<div class="card-footer">
 				<div class="d-flex justify-content-center links">
-					Don't have an account?<a href="#">Sign Up</a>
+					Don't have an account?<a href="signup.php">Sign Up</a>
 				</div>
 				<div class="d-flex justify-content-center">
-					<a href="#">Forgot your password?</a>
+					<a href="#" >Forgot your password?</a>
 				</div>
 			</div>
 		</div>

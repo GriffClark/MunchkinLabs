@@ -14,17 +14,17 @@ align-content: center;
 }
 
 .card{
-height: 370px;
+height: 25rem;
 margin-top: auto;
 margin-bottom: auto;
-width: 400px;
+width: 25rem;
 background-color: rgba(0,0,0,0.5) !important;
 }
 
 .social_icon span{
 font-size: 60px;
 margin-left: 10px;
-color: #FFC312;
+color: #62673C;
 }
 
 .social_icon span:hover{
@@ -44,7 +44,7 @@ top: -45px;
 
 .input-group-prepend span{
 width: 50px;
-background-color: #FFC312;
+background-color: #62673C;
 color: black;
 border:0 !important;
 }
@@ -112,5 +112,7 @@ margin-left: 4px;
 }
 
 .nav-link{
-    color: #29384A;
+    color: #000000;
 }
+
+
