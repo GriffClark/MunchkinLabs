@@ -62,10 +62,17 @@ include_once 'header.php';
 	</div>
     </div>
   </div>
-
-
-	
 </div>
+
+<?php
+if (isset($_GET["error"])) {
+    if ($_GET["error"] == "") {
+        // If the user put in empty input
+        echo"<p>Empty input</p>";
+    }
+
+}
+?>
 
 <?php
 include_once 'footer.php';

@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -38,12 +42,17 @@
 
         <div class="row" id="rightNavbar">
             <ul class="navbar-nav right-align">
-            <li class="nav-item">
-                <a class="nav-link" href="signup.php">Sign Up</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="login.php">Log In</a>
-            </li>
+                <?php
+                if (isset($_SESSION["userId"])) {
+                    echo '<li class="nav-item"><a class="nav-link" href="#">Profile</a></li>';
+                    echo '<li class="nav-item"> <a class="nav-link" href="logout.inc.php">Log Out</a> </li>';
+                }
+                else {
+                    echo '<li class="nav-item"><a class="nav-link" href="signup.php">Sign Up</a></li>';
+                    echo '<li class="nav-item"> <a class="nav-link" href="login.php">Log In</a> </li>';
+                }
+                ?>
+            
         </ul>
 
         </div>

@@ -9,7 +9,7 @@ include_once 'header.php';
 				<h3>Log In</h3>
 			</div>
 			<div class="card-body">
-				<form action="/core/includes/login.inc.php" method="post">
+				<form action="login.inc.php" method="post">
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -24,7 +24,7 @@ include_once 'header.php';
 						<input type="password" name="pwd" class="form-control" placeholder="password">
 					</div>
 					<div class="form-group">
-						<input type="submit" value="Login" class="btn float-right login_btn">
+					<input type="submit" name="submit" class="btn float-right login_btn">
 					</div>
 				</form>
 			</div>

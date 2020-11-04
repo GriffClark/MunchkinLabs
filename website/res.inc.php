@@ -77,3 +77,37 @@ function createUser($conn, $name, $email, $pwd) {
     header("location: index.php?error=none");
     exit();
 }
+
+function emptyInputLogin($username, $pwd) {
+    if(empty($username) || empty($pwd)){
+        return true;
+    }
+    else return false;
+}
+
+function loginUser($conn, $username, $pwd) {
+    $dbResponse = emailExists($conn, $username);
+
+    if ($dbResponse === false) {
+        header("location: login.php?error=wronglogin");
+        exit();
+    }
+
+    $pwdHashed = $dbResponse["usersPwd"];  // Refrences assoc array returned from DB
+    $checkPwd = password_verify($pwd, $pwdHashed);
+
+    if ($checkPwd === false) {
+        header("location: login.php?error=wronglogin");
+        exit();
+    }
+
+    else if ($checkPwd === true) {
+        session_start();
+        $_SESSION["userId"] = $dbResponse["usersId"];
+        $_SESSION["email"] = $dbResponse["usersEmail"];
+        $_SESSION["name"] = $dbResponse["usersFullName"];
+        $_SESSION["personalityScore"] = $dbResponse["personalityScore"];
+        header("location: index.php?error=none");
+        exit();
+    }
+}
