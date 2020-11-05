@@ -34,6 +34,13 @@ session_start();
             <li class="nav-item">
                 <a class="nav-link" href="search.php">Search</a>
             </li>
+            <?php
+            if(isset($_SESSION["userId"])){
+                if($_SESSION["personalityScore"] == null){
+                    echo '<li class="nav-item"> <a class="nav-link" href="survey.php">Improve suggestion Accuracy</a> </li>';
+                }
+            }
+            ?>
         </ul>
 
         </div>
@@ -51,6 +58,8 @@ session_start();
                     echo '<li class="nav-item"><a class="nav-link" href="signup.php">Sign Up</a></li>';
                     echo '<li class="nav-item"> <a class="nav-link" href="login.php">Log In</a> </li>';
                 }
+
+                
                 ?>
             
         </ul>

@@ -1,11 +1,12 @@
 <?php
 include_once 'header.php';
 
-if ((isset($_SESSION["userId"]))) {
+if (isset($_SESSION["userId"])) {
+    // We are logged in
     
 }
 else {
-    header("location: signup.php");
+    header("location: login.php");
     exit();
 }
 
