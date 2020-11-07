@@ -20,8 +20,6 @@ session_start();
 
 <body>
 
-
-
 <nav class="navbar navbar-expand-sm " id="navbar">
 
     <!-- Links -->
