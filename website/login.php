@@ -15,7 +15,6 @@ include_once 'header.php';
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
 						<input type="text" name="email" class="form-control" placeholder="email">
-						
 					</div>
 					<div class="input-group form-group">
 						<div class="input-group-prepend">

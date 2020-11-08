@@ -10,21 +10,34 @@ include_once 'header.php';
 				<h3> Survey </h3>
 			</div>
 			<div class="card-body">
-                <form action="survey.inc.php" id="survey">
+                <form action="survey.inc.php" id="survey" method = "post">
                 <?php
-                //XXX should this be moved to a CSV file?
-                $questions = array("Do you wear a watch?",
-                "Do you enjoy camping?",
-                "Are you over 35 years old?",
-                "Do you enjoy traveling?",
-                "Do you enjoy big groups?",
-                "Do you enjoy spending time in nature?",
-                "Do you enjoy hiking in nature?",
-                "Do you generally enjoy spending lots of time with people?",
-                "Do you like animals?",
-                "Do you enjoy meuseums?",
-                "Do you like authentic foreign foods?");
-                $i = 0; // $i is used to provide each question with a unique name
+                $questions = array(); // This is where we will store the text from the questions
+                $ids = array(); // FIXME this solution is terrible
+                $i = 0;
+                //Pull out intake questions from the database
+                $sql = "SELECT * FROM questions WHERE intakeQuestion = 1;";
+                $stmt = mysqli_stmt_init($conn);  
+
+                if(!$conn){
+                    header("location: ../../index.php?error=noConn");
+                      exit();
+                }
+
+                if (!mysqli_stmt_prepare($stmt, $sql)) {
+                    header("location: ../../index.php?error=stmtfailed");
+                   exit();
+                }
+                
+                mysqli_stmt_execute($stmt);
+                $resultData = mysqli_stmt_get_result($stmt);
+
+                while($row = mysqli_fetch_array($resultData)) {
+                    array_push($questions, $row['questionText']);
+                    array_push($ids, $row['id']);
+                }
+                $_SESSION["question-id-array"] = $ids;
+
                 foreach($questions as $line) {
                     echo "<div class='form-group survey-question' id='questionGroup$i'>";
                     echo "<p style=\"color:white;\">$line</p>";
@@ -90,7 +103,15 @@ include_once 'header.php';
             }
             // If it's the last question, submit the form
             else if(i == iMax){
-                document.getElementById("survey").submit();
+
+                let questionAnswerPairs = [];
+                // Instead of just posting the yes/no data, we want to include the questions the data corosponds too as well
+                // document.getElementById("survey").submit();
+                const answers = $(".survey-question");
+                for(var i = 0; i < answers.length; i++) {
+                    questionAnswerPairs.push([answers[i].value, $_SESSION["question-id-array"][i]]);
+                } 
+                console.log(questionAnswerPairs);
             }
         });
 
