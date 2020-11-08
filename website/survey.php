@@ -13,8 +13,6 @@ include_once 'header.php';
                 <form action="survey.inc.php" id="survey" method = "post">
                 <?php
                 $questions = array(); // This is where we will store the text from the questions
-                $ids = array(); // FIXME this solution is terrible
-                $i = 0;
                 //Pull out intake questions from the database
                 $sql = "SELECT * FROM questions WHERE intakeQuestion = 1;";
                 $stmt = mysqli_stmt_init($conn);  
@@ -33,21 +31,16 @@ include_once 'header.php';
                 $resultData = mysqli_stmt_get_result($stmt);
 
                 while($row = mysqli_fetch_array($resultData)) {
-                    array_push($questions, $row['questionText']);
-                    array_push($ids, $row['id']);
-                }
-                $_SESSION["question-id-array"] = $ids;
-
-                foreach($questions as $line) {
-                    echo "<div class='form-group survey-question' id='questionGroup$i'>";
-                    echo "<p style=\"color:white;\">$line</p>";
-                    echo "<input type='radio' name='qestion$i value='yes'>";
+                    $id = $row['id'];
+                    $questionText = $row['questionText'];
+                    echo "<div class='form-group survey-question' id='questionGroup$id'>";
+                    echo "<p style=\"color:white;\">$questionText</p>";
+                    echo "<input type='radio' name='question$id value='yes'>";
                     echo "<label for=\"yes\" style=\"color:white;\"> Yes </label><br>";
-                    echo "<input type='radio' name='qestion$i' value='no'>";
+                    echo "<input type='radio' name='question$id' value='no'>";
                     echo "<label for=\"no\" style=\"color:white;\"> No </label><br>";
                     echo "</div>";
-                    $i++;
-                  }
+                }
                 ?>  
                 <div class="form-group">
                     <button id="back-btn" class="btn float-left login_btn">Back</button>
@@ -62,75 +55,60 @@ include_once 'header.php';
 </div>
 
 <script>
-    $(document).ready(function() {
-        // Prevent back button from immidiately submitting form
-        document.getElementById("back-btn").addEventListener("click", (event)=>{
-            event.preventDefault();
-        })
+    $(document).ready(()=> {
+        // Init
+    let questions = document.querySelectorAll("#main-div .survey-question");
+    currentQuestionIndex = 0;
 
-        // Prevent next button from immidiately submitting form
-        document.getElementById("next-btn").addEventListener("click", (event)=>{
-            event.preventDefault();
-        })
+    // Prevent back button from immidiately submitting form
+    document.getElementById("back-btn").addEventListener("click", (event)=>{
+        event.preventDefault();
+    })
 
-        // Hide the survey questions
-        $(".survey-question").hide();
+    // Prevent next button from immidiately submitting form
+    document.getElementById("next-btn").addEventListener("click", (event)=>{
+        event.preventDefault();
+    })
 
-        let i = 0; // This will track which question we're on
-        let iMax = document.querySelectorAll("#main-div .survey-question").length;
-        
-        // DEBUG
-        console.log("iMax: " + iMax);
+    // Hide the survey questions
+    for (let i = 0; i < questions.length; i++) {
+        questions[i].style.display = 'none';
+    }
 
-        // Show the first question
-        $("#questionGroup"+i).show();
+    // Show the first question
+    $(questions[currentQuestionIndex]).show();
 
-        // Script for the 'next' button
-        $("#next-btn").click(() => {
-            // After the user clicks 'next', hide this question and show the next one
-            $("#questionGroup"+i).hide();
-            $("#questionGroup"+(i+1)).show();
-            
-            // Update which question we're on
-            i++;
-            
-            // DEBUG
-            console.log("i: " + i);
+    // Script for the 'next' button
+    $("#next-btn").click(() => {
 
-            // If it's the last question, tell our user it's going to submit the form
-            if(i == (iMax - 1)){
-                $("#next-btn").text("Submit");
-            }
-            // If it's the last question, submit the form
-            else if(i == iMax){
+        // After the user clicks 'next', hide this question and show the next one
+        $(questions[currentQuestionIndex]).hide();
+        currentQuestionIndex++;
+        $(questions[currentQuestionIndex]).show();
 
-                let questionAnswerPairs = [];
-                // Instead of just posting the yes/no data, we want to include the questions the data corosponds too as well
-                // document.getElementById("survey").submit();
-                const answers = $(".survey-question");
-                for(var i = 0; i < answers.length; i++) {
-                    questionAnswerPairs.push([answers[i].value, $_SESSION["question-id-array"][i]]);
-                } 
-                console.log(questionAnswerPairs);
-            }
-        });
+        // If it's the last question, tell our user it's going to submit the form
+        if(currentQuestionIndex == (questions.length - 1)){
+            $("#next-btn").text("Submit");
+        }
+        // If it's the last question, submit the form
+        if(currentQuestionIndex == questions.length){
+            // document.getElementById("survey").submit();
+            let questionAnswerPairs = [];
+            document.write($('#survey').serialize());
 
-        // Script for the 'back' button
-        $("#back-btn").click(()=>{
-            if( i > 0){
-                // After the user clicks 'back', hide this question and show the previous one
-                $("#questionGroup"+i).hide();
-                $("#questionGroup"+(i-1)).show();
-                
-                // Update which question we're on
-                i--;
-            }
-            else{
-                //DEBUG
-                console.log("Couldn't go back. Currently ont he first question.")
-            } 
-        });
+        }
     });
+
+    // Script for the 'back' button
+    $("#back-btn").click(()=>{
+        // After the user clicks 'back', hide this question and show the previous one
+        $(questions[currentQuestionIndex]).hide();
+        currentQuestionIndex--;
+        $(questions[currentQuestionIndex]).show();
+        
+    });
+    });
+     
 </script>
 
 <?php
