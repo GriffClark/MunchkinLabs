@@ -92,8 +92,9 @@ include_once 'header.php';
         }
         // If it's the last question, submit the form
         if(currentQuestionIndex == questions.length){
-            // document.getElementById("survey").submit();
-            let questionAnswerPairs = [];
+            document.getElementById("survey").submit();
+
+            // DEBUG
             document.write($('#survey').serialize());
 
         }
