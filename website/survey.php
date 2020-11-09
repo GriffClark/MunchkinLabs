@@ -1,7 +1,6 @@
 <?php
 include_once 'header.php';
 ?>
-
 <div class="container" id="main-div">
     <div class="col" style="margin-top: 2rem;">
     <div class="d-flex justify-content-center h-100">
@@ -35,7 +34,7 @@ include_once 'header.php';
                     $questionText = $row['questionText'];
                     echo "<div class='form-group survey-question' id='questionGroup$id'>";
                     echo "<p style=\"color:white;\">$questionText</p>";
-                    echo "<input type='radio' name='question$id value='yes'>";
+                    echo "<input type='radio' name='question$id' value='yes'>";
                     echo "<label for=\"yes\" style=\"color:white;\"> Yes </label><br>";
                     echo "<input type='radio' name='question$id' value='no'>";
                     echo "<label for=\"no\" style=\"color:white;\"> No </label><br>";
@@ -44,7 +43,7 @@ include_once 'header.php';
                 ?>  
                 <div class="form-group">
                     <button id="back-btn" class="btn float-left login_btn">Back</button>
-                    <button id="next-btn" class="btn float-right login_btn">Next</button>
+                    <button id="next-btn" type="submit" name="submit" class="btn float-right login_btn">Next</button>
                 </div>
                 </form>
             </div>
@@ -67,7 +66,9 @@ include_once 'header.php';
 
     // Prevent next button from immidiately submitting form
     document.getElementById("next-btn").addEventListener("click", (event)=>{
-        event.preventDefault();
+        if(currentQuestionIndex != (questions.length - 1)){
+            event.preventDefault();
+        }
     })
 
     // Hide the survey questions
@@ -91,13 +92,11 @@ include_once 'header.php';
             $("#next-btn").text("Submit");
         }
         // If it's the last question, submit the form
-        if(currentQuestionIndex == questions.length){
-            document.getElementById("survey").submit();
-
-            // DEBUG
-            document.write($('#survey').serialize());
-
-        }
+        // if(currentQuestionIndex == questions.length){
+        //     // document.getElementById("survey").submit();
+        //     // DEBUG
+        //     // document.write(decodeURI($('#survey').serialize()));
+        // }
     });
 
     // Script for the 'back' button

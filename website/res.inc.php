@@ -15,7 +15,7 @@ function invalidEmail($email) {
 }
 
 function invalidFields($name, $email) {
-    if(!preg_match("/^[a-zA-Z0-9@-_]*$/", $name) || preg_match("/^[a-zA-Z0-9@]*$/", $email) ) {
+    if(!preg_match("/^[a-zA-Z0-9@-_ ]*$/", $name) || preg_match("/^[a-zA-Z0-9@-_ ]*$/", $email) ) {
         return true;
     }
     else return false;
