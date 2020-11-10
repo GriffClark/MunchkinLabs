@@ -111,3 +111,48 @@ function loginUser($conn, $username, $pwd) {
         exit();
     }
 }
+
+function insertBinaryAnswer($conn, $row) {
+    //TODO: This should automatically delete all other answers for this question
+    $userId = $_SESSION['userId'];
+    $rowId = $row['id'];
+    $answer = ($_POST["question$rowId"]);
+    $timestamp = date('Y-m-d H:i:s');
+
+    // Automatically change no/yes to TRUE/FALSE
+    if($answer == "yes"){
+        $binaryAnswer = 1;
+    }
+    elseif($answer == "no"){
+        $binaryAnswer = 0;
+    }
+    else{
+        header("location: index.php?error=badAnswer");
+        exit();
+    }
+    
+    // DEBUG
+    // echo "for user $userId @ question$rowId, answer $answer ";
+
+    $sql = "INSERT INTO answers (userId, questionId, binaryAnswer, createdAt) VALUES (?,?,$binaryAnswer,?);";
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: index.php?error=stmtFailed");
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt, "sss",$userId, $rowId, $timestamp);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+}
+
+function addDirtyUser($conn){
+    $userId = number_format($_SESSION['userId']);
+    // Make sure we add our user to the dirtyUser table
+    $sql = "INSERT INTO dirtyusers (userId) VALUES ($userId);"; 
+    if ($conn->query($sql) === TRUE) {
+        echo "New record created successfully";
+      } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+      }
+    }
