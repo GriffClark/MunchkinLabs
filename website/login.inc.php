@@ -7,7 +7,7 @@ if (isset($_POST["submit"])) {
 
 
     if (emptyInputLogin($username, $pwd) !== false) {
-        header("location: ../login.php?error=emptyInput");
+        header("location: login.php?error=emptyInput");
         exit();
     }
 
@@ -15,6 +15,6 @@ if (isset($_POST["submit"])) {
 }
 
 else {
-    header("location: ../login.php?error=illigalAccessPath");
+    header("location: login.php?error=illigalAccessPath");
     die();
 }

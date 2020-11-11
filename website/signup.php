@@ -4,13 +4,13 @@ include_once 'header.php';
 
 
 <div class="container">
-<div class="headline-text-container" style="padding-top: 2rem;">
+<div class="headline-text-container" style="padding-top: 2rem; color: #ffe400">
 
-<h1 class="headline" > Have More Fun Connecting in the Real World </h1>
+<h1 class="headline" style="color : #14a76c;"> Have More Fun Connecting in the Real World </h1>
 </div>
 <div class="row">
     <div class="col">
-    <img src="../res/purple-diagram.jpg" style="max-width:40rem;height:auto;"/>
+    <img src="../res/MunchkinLabsLogo.jpg" style="max-width:40rem;height:auto;"/>
 
     </div>
     <div class="col">
@@ -48,7 +48,7 @@ include_once 'header.php';
 
                     </div>
                     <div class="form-group">
-						<input type="submit" name="submit" class="btn float-right login_btn">
+						<input type="submit" value="Submit" name="submit" class="btn float-right login_btn">
 					</div>
                 </form>
             </div>

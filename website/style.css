@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
-
+/* Green: 14a76c, orange: ff652f*/
 html,body{
-background-image: url('https://www.yosemitehikes.com/images/wallpaper/yosemitehikes.com-half-dome-gp-mist-2560x1440.jpg');
+/* background-image: url('../res/grey-1.jpg');
+ */
+background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(34,34,34,1) 100%);
 background-size: cover;
 background-repeat: no-repeat;
 background-attachment: fixed;
@@ -27,7 +29,7 @@ background-color: rgba(0,0,0,0.5) !important;
 .social_icon span{
 font-size: 60px;
 margin-left: 10px;
-color: #7F56B4;
+color: #ff652f;
 }
 
 .social_icon span:hover{
@@ -47,7 +49,7 @@ top: -45px;
 
 .input-group-prepend span{
 width: 50px;
-background-color: #7F56B4;
+background-color: #ff652f;
 color: black;
 border:0 !important;
 }
@@ -71,8 +73,8 @@ margin-right: 5px;
 }
 
 .login_btn{
-color: black;
-background-color: #7F56B4;
+color: white;
+background-color: #ff652f;
 width: 100px;
 }
 
@@ -111,12 +113,13 @@ margin-left: 4px;
 }
 
 .navbar {
-    background-color:#7F56B4 ;
+    background-color:#747474 ;
     
 }
 
 .nav-link{
     color: #000000;
+    font-size: 20px;
 }
 
 .diagram{
@@ -126,13 +129,61 @@ margin-left: 4px;
 }
 
 .headline{
-    color: #1E54AC;
+    /* background: rgb(0,0,0);
+    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(34,34,34,1) 100%); */
     text-align: center;
     padding:2px 6px 4px 6px; 
-    background-color: #eeeeee; 
-    border: #dddddd 2px solid
+    /* background-color: #14a76c;  */
+    /* border: #000 2px solid */
 }
 
 .survey-text{
     color: white;
 }
+
+.search-result-card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+  }
+
+  
+  .search-result-card-link {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+  }
+  
+  .search-result-card-btn:hover, a:hover {
+    opacity: 0.7;
+  }
+
+  .navbar-brand {
+    width:7rem;
+    font-size: 24px;
+  }
+  .navbar-brand img {
+    height: 5rem;
+    /* put value of image height as your need */
+    float: left;
+    margin-right: 7px;
+  }
+
+  .navbar-brand{
+      margin-top: 0;
+      margin-right: 0;
+      margin-bottom: 0;
+  }
+
+  .headline-text-container {
+    padding-top: 2rem;
+    color: #14a76c;
+  }
+
+  .submit span {
+    display: none;
+  }
+  .submit:after {
+    content: 'whatever it is you want to add';
+  }

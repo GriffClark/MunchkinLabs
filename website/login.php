@@ -23,7 +23,7 @@ include_once 'header.php';
 						<input type="password" name="pwd" class="form-control" placeholder="password">
 					</div>
 					<div class="form-group">
-					<input type="submit" name="submit" class="btn float-right login_btn">
+					<input type="submit" name="submit" value="Submit" class="btn float-right login_btn">
 					</div>
 				</form>
 			</div>

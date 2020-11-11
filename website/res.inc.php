@@ -106,7 +106,6 @@ function loginUser($conn, $username, $pwd) {
         $_SESSION["userId"] = $dbResponse["usersId"];
         $_SESSION["email"] = $dbResponse["usersEmail"];
         $_SESSION["name"] = $dbResponse["usersFullName"];
-        $_SESSION["personalityScore"] = $dbResponse["personalityScore"];
         header("location: index.php?error=none");
         exit();
     }
