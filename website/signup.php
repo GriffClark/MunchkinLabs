@@ -10,7 +10,7 @@ include_once 'header.php';
 </div>
 <div class="row">
     <div class="col">
-    <img src="../res/MunchkinLabsLogo.jpg" style="max-width:40rem;height:auto;"/>
+    <img src="../res/SignupPhoto.jpg" style="max-width:40rem;height:auto;"/>
 
     </div>
     <div class="col">

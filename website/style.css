@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
-/* Green: 14a76c, orange: ff652f*/
+/* Green: #14a76c | orange: #ff652f | yellow: #ffe400*/
 html,body{
 /* background-image: url('../res/grey-1.jpg');
  */
@@ -24,12 +24,17 @@ margin-top: auto;
 margin-bottom: auto;
 width: 25rem;
 background-color: rgba(0,0,0,0.5) !important;
+box-shadow: 5px 10px #888888; 
+border: 2px solid #ffe400; 
+/* FIXME: This is making every box yellow again */
+border-radius: 5px;
+
 }
 
 .social_icon span{
 font-size: 60px;
 margin-left: 10px;
-color: #ff652f;
+color: #4b0082;
 }
 
 .social_icon span:hover{
@@ -49,7 +54,7 @@ top: -45px;
 
 .input-group-prepend span{
 width: 50px;
-background-color: #ff652f;
+background-color: #4b0082;
 color: black;
 border:0 !important;
 }
@@ -74,7 +79,7 @@ margin-right: 5px;
 
 .login_btn{
 color: white;
-background-color: #ff652f;
+background-color: #4b0082;
 width: 100px;
 }
 
@@ -146,6 +151,7 @@ margin-left: 4px;
     max-width: 300px;
     margin: auto;
     text-align: center;
+    
   }
 
   
@@ -178,7 +184,7 @@ margin-left: 4px;
 
   .headline-text-container {
     padding-top: 2rem;
-    color: #14a76c;
+    color: #4b0082;
   }
 
   .submit span {

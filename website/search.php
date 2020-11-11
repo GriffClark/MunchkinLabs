@@ -4,7 +4,7 @@ include_once 'header.php';
 
 <body>
 <div class="container">
-    <h1 style="padding-top: 3rem; color: #FFF;"> Find Users</h1>
+    <h1 style="padding-top: 3rem; color: #FFF;"> Search Friends List</h1>
     
     <div class="md-form active-pink active-pink-2 mb-3 mt-0" onKeyPress="return checkSubmit(event)">
     <form action="search.php" method="post">
@@ -48,9 +48,9 @@ include_once 'header.php';
                         echo ' <div class="card search-result-card" id='.$id.'>
                         <!-- Cant get CSS to apply to the card, so coded it into the HTML -->
                         <img src="../res/griffin-diving.jpg" alt="John" style="width:100%">
-                        <h1 style="color: white;">'.$name.'</h1>
-                        <p style="color: white;">'.$bio.'</p>
-                        <p><button class="search-result-card-btn" style="border: none; outline: 0; display: inline-block; padding: 8px; color: white; background-color: #000; text-align: center; cursor: pointer; width: 100%; font-size: 18px;">Intertwine</button></p>
+                        <h3 style="color: #ffe400; padding-top: 0.5rem;">'.$name.'</h3>
+                        <p style="color: #FFF;">'.$bio.'</p>
+                        <p><button class="search-result-card-btn" style="border: none; outline: 0; display: inline-block; padding: 8px; color: white; background-color: #14a76c; text-align: center; cursor: pointer; width: 100%; font-size: 18px;">Connect</button></p>
                         </div>';
                     }
                 } 
@@ -66,6 +66,9 @@ include_once 'header.php';
 <script>
 // Get the input field
 $(document).ready(() =>{
+    // TODO: There has to be a better way to do this than pressing a hidden button
+    document.getElementById("searchBtn").style.display = "none";
+
     let input = document.getElementById("myInput");
 
 // Execute a function when the user releases a key on the keyboard

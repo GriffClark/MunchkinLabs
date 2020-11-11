@@ -2,7 +2,8 @@
 include_once 'header.php';
 ?>
 <body>
-TODO: Write me!
+<div class="container">
+</div>
 </body>
 <?php
 include_once 'footer.php';
