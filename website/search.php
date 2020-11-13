@@ -48,7 +48,7 @@ include_once 'header.php';
                         echo ' <div class="card search-result-card" id='.$id.'>
                         <!-- Cant get CSS to apply to the card, so coded it into the HTML -->
                         <img src="../res/griffin-diving.jpg" alt="John" style="width:100%">
-                        <h3 style="color: #ffe400; padding-top: 0.5rem;">'.$name.'</h3>
+                        <h3 style="color: #FFF; padding-top: 0.5rem;">'.$name.'</h3>
                         <p style="color: #FFF;">'.$bio.'</p>
                         <p><button class="search-result-card-btn" style="border: none; outline: 0; display: inline-block; padding: 8px; color: white; background-color: #14a76c; text-align: center; cursor: pointer; width: 100%; font-size: 18px;">Connect</button></p>
                         </div>';

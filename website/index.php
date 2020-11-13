@@ -11,4 +11,3 @@ else {
 
 
 include_once 'footer.php';
-

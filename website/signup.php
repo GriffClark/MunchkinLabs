@@ -6,7 +6,7 @@ include_once 'header.php';
 <div class="container">
 <div class="headline-text-container" style="padding-top: 2rem; color: #ffe400">
 
-<h1 class="headline" style="color : #14a76c;"> Have More Fun Connecting in the Real World </h1>
+<h1 class="headline" style="color : #FFF;"> Have More Fun Connecting in the Real World </h1>
 </div>
 <div class="row">
     <div class="col">

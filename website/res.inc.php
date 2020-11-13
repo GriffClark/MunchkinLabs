@@ -153,5 +153,37 @@ function addDirtyUser($conn){
         echo "New record created successfully";
       } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
-      }
     }
+}
+
+function createEndpoint($conn, $title, $scores) {
+    // Add the endpoint
+    $sql = "INSERT INTO endpoints (name, url) VALUES ('$title', 'www.google.com');";
+    if ($conn->query($sql) === FALSE) {
+        echo "Couldn't make endpoint";
+        die();
+    }
+ 
+    // Get the vectorId
+
+    $sql = "SELECT id FROM endpoints WHERE name = '$title';";
+    $result = $conn->query($sql);
+
+    $id = -1;
+
+    while($row = $result->fetch_assoc()) { // This should only hit once
+        $id = $row["id"];
+    }
+
+    foreach($scores as $scoreName => $value){
+        $sql = "INSERT INTO endpointvectors (vectorId, vectorName, value) VALUES ($id, '$scoreName', $value);";
+        if ($conn->query($sql) === FALSE) {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+            
+    }
+
+    
+    header("location: endpoint.php?error=none");
+    exit();
+}
